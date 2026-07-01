@@ -55,6 +55,8 @@ void *x_pop_from_list(x_list_t *list) {
   list->length--;
   void *popped_value = list->data[list->length];
 
+  list->data[list->length] = NULL;
+
   return popped_value;
 }
 
@@ -119,7 +121,7 @@ void x_delete_from_list(x_list_t *list, void *obj) {
   }
 
   int idx = x_find_obj_in_list(list, obj);
-  
+
   if (idx < 0) {
     return;
   }
